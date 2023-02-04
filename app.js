@@ -4,7 +4,7 @@ const Routes=require("./routes/routes.js")
 //const addUser = require("./controller/user-controller")
 //const  router =require("./routes/router")
 const app=express();
-const port=8003;
+const port=process.env.PORT || 8003;
 require("./db/conn");
 const ChannelModel=require("./models/channel");
 const cors=require("cors");
