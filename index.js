@@ -2,6 +2,26 @@ require("dotenv").config();
 const express= require("express");
 const Routes=require("./routes/routes.js")
 //const addUser = require("./controller/user-controller")
+const https=require("https")
+const {Server}=require('socket.io')
+const server=https.createServer(app)
+
+
+const io=new Server(server,{
+    cors:{
+        //origin:"http://172.31.139.118:3000",
+        origin:"https://socketrmn1.netlify.app/",
+        method:["GET","POST"],
+
+    },
+})
+io.on("connection",(socket)=>{
+    console.log(`User connected ${socket.id}`)
+    socket.on("send_message",(data)=>{
+        console.log(data)
+        socket.broadcast.emit("receive",data)
+    })
+})
 //const  router =require("./routes/router")
 const app=express();
 const port=process.env.PORT || 8003;
