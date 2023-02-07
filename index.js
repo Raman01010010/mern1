@@ -2,9 +2,10 @@ require("dotenv").config();
 const express= require("express");
 const Routes=require("./routes/routes.js")
 //const addUser = require("./controller/user-controller")
-const https=require("https")
+const app=express()
+const http=require("http")
 const {Server}=require('socket.io')
-const server=https.createServer(app)
+const server=http.createServer(app)
 
 
 const io=new Server(server,{
