@@ -24,7 +24,7 @@ io.on("connection",(socket)=>{
     })
 })
 //const  router =require("./routes/router")
-const app=express();
+
 const port=process.env.PORT || 8003;
 require("./db/conn");
 const ChannelModel=require("./models/channel");
